@@ -5,145 +5,140 @@
 <title>CHMOD Calculator</title>
 
 <style>
-    body {
-        font-family: 'Segoe UI', Tahoma, sans-serif;
-        background: linear-gradient(135deg, #667eea, #764ba2);
-        min-height: 100vh;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin: 0;
-    }
+body {
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+}
 
-    .card {
-        background: #fff;
-        width: 420px;
-        padding: 25px;
-        border-radius: 12px;
-        box-shadow: 0 15px 30px rgba(0,0,0,0.2);
-    }
+.card {
+    background: #fff;
+    width: 450px;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+}
 
-    h2 {
-        text-align: center;
-        color: #333;
-        margin-bottom: 20px;
-    }
+h2 {
+    text-align: center;
+    color: #333;
+}
 
-    table {
-        width: 100%;
-        border-collapse: collapse;
-        margin-bottom: 20px;
-    }
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+}
 
-    th {
-        background: #f4f4f4;
-        padding: 10px;
-        font-size: 14px;
-    }
+th {
+    background: #f4f4f4;
+    padding: 10px;
+}
 
-    td {
-        text-align: center;
-        padding: 10px;
-    }
+td {
+    text-align: center;
+    padding: 10px;
+}
 
-    tr:nth-child(even) {
-        background: #fafafa;
-    }
+input[type="checkbox"] {
+    transform: scale(1.3);
+    cursor: pointer;
+}
 
-    input[type="checkbox"] {
-        transform: scale(1.2);
-        cursor: pointer;
-    }
+.result {
+    margin-top: 15px;
+    padding: 15px;
+    background: #f0f4ff;
+    border-radius: 8px;
+    text-align: center;
+}
 
-    button {
-        width: 100%;
-        padding: 12px;
-        background: #667eea;
-        border: none;
-        color: #fff;
-        font-size: 16px;
-        border-radius: 8px;
-        cursor: pointer;
-        transition: 0.3s;
-    }
+.value {
+    font-weight: bold;
+    font-size: 18px;
+}
 
-    button:hover {
-        background: #5a67d8;
-    }
+.copy-btn {
+    margin-top: 10px;
+    padding: 8px 12px;
+    background: #667eea;
+    border: none;
+    color: #fff;
+    border-radius: 6px;
+    cursor: pointer;
+}
 
-    .result {
-        margin-top: 20px;
-        padding: 15px;
-        background: #f0f4ff;
-        border-radius: 8px;
-        text-align: center;
-    }
+.explain {
+    margin-top: 15px;
+    padding: 10px;
+    background: #fafafa;
+    border-radius: 8px;
+    font-size: 14px;
+}
 
-    .result p {
-        margin: 8px 0;
-        font-size: 16px;
-    }
-
-    .value {
-        font-weight: bold;
-        color: #333;
-        font-size: 18px;
-    }
-
-    footer {
-        text-align: center;
-        font-size: 12px;
-        color: #666;
-        margin-top: 10px;
-    }
+footer {
+    text-align: center;
+    font-size: 12px;
+    margin-top: 10px;
+    color: #666;
+}
 </style>
 </head>
 
 <body>
 
 <div class="card">
-    <h2>CHMOD Calculator</h2>
+<h2>🔐 CHMOD Calculator</h2>
 
-    <table>
-        <tr>
-            <th></th>
-            <th>Read (4)</th>
-            <th>Write (2)</th>
-            <th>Execute (1)</th>
-        </tr>
+<table>
+<tr>
+    <th></th>
+    <th>Read (4)</th>
+    <th>Write (2)</th>
+    <th>Execute (1)</th>
+</tr>
 
-        <tr>
-            <td><b>Owner</b></td>
-            <td><input type="checkbox" id="or"></td>
-            <td><input type="checkbox" id="ow"></td>
-            <td><input type="checkbox" id="ox"></td>
-        </tr>
+<tr>
+    <td><b>Owner</b></td>
+    <td><input type="checkbox" id="or"></td>
+    <td><input type="checkbox" id="ow"></td>
+    <td><input type="checkbox" id="ox"></td>
+</tr>
 
-        <tr>
-            <td><b>Group</b></td>
-            <td><input type="checkbox" id="gr"></td>
-            <td><input type="checkbox" id="gw"></td>
-            <td><input type="checkbox" id="gx"></td>
-        </tr>
+<tr>
+    <td><b>Group</b></td>
+    <td><input type="checkbox" id="gr"></td>
+    <td><input type="checkbox" id="gw"></td>
+    <td><input type="checkbox" id="gx"></td>
+</tr>
 
-        <tr>
-            <td><b>Others</b></td>
-            <td><input type="checkbox" id="tr"></td>
-            <td><input type="checkbox" id="tw"></td>
-            <td><input type="checkbox" id="tx"></td>
-        </tr>
-    </table>
+<tr>
+    <td><b>Others</b></td>
+    <td><input type="checkbox" id="tr"></td>
+    <td><input type="checkbox" id="tw"></td>
+    <td><input type="checkbox" id="tx"></td>
+</tr>
+</table>
 
-    <button onclick="calculate()">Calculate Permission</button>
+<div class="result">
+    <p>Numeric: <span class="value" id="numeric">000</span></p>
+    <p>Symbolic: <span class="value" id="symbolic">---------</span></p>
+    <button class="copy-btn" onclick="copyValue()">Copy</button>
+</div>
 
-    <div class="result">
-        <p>Numeric Value: <span class="value" id="numeric">---</span></p>
-        <p>Symbolic Value: <span class="value" id="symbolic">---</span></p>
-    </div>
+<!-- NEW EXPLANATION SECTION -->
+<div class="explain" id="explain">
+    Select permissions to see explanation
+</div>
 
-    <footer>
-        Linux File Permission Calculator
-    </footer>
+<footer>
+Made by Omkar Deshmukh all writes are reserved. 2026
+</footer>
+
 </div>
 
 <script>
@@ -156,7 +151,20 @@ function calc(r, w, x) {
     return { value, sym };
 }
 
-function calculate() {
+function explainText(label, sym) {
+    let text = "";
+    if (sym === "rwx") text = "Full access";
+    else if (sym === "rw-") text = "Read & Write";
+    else if (sym === "r-x") text = "Read & Execute";
+    else if (sym === "r--") text = "Read only";
+    else if (sym === "-w-") text = "Write only";
+    else if (sym === "--x") text = "Execute only";
+    else text = "No permission";
+
+    return `<b>${label}</b> → ${sym} (${text})`;
+}
+
+function updatePermissions() {
     let owner = calc(or.checked, ow.checked, ox.checked);
     let group = calc(gr.checked, gw.checked, gx.checked);
     let other = calc(tr.checked, tw.checked, tx.checked);
@@ -166,6 +174,20 @@ function calculate() {
 
     document.getElementById("symbolic").innerText =
         owner.sym + group.sym + other.sym;
+
+    document.getElementById("explain").innerHTML =
+        explainText("Owner", owner.sym) + "<br>" +
+        explainText("Group", group.sym) + "<br>" +
+        explainText("Others", other.sym);
+}
+
+document.querySelectorAll("input[type='checkbox']")
+.forEach(cb => cb.addEventListener("change", updatePermissions));
+
+function copyValue() {
+    let text = document.getElementById("numeric").innerText;
+    navigator.clipboard.writeText(text);
+    alert("Copied: " + text);
 }
 </script>
 
