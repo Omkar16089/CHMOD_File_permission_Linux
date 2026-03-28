@@ -72,6 +72,10 @@ input[type="checkbox"] {
     cursor: pointer;
 }
 
+.copy-btn:hover {
+    background: #5a67d8;
+}
+
 .explain {
     margin-top: 15px;
     padding: 10px;
@@ -80,11 +84,13 @@ input[type="checkbox"] {
     font-size: 14px;
 }
 
-footer {
+.footer {
+    margin-top: 15px;
+    padding: 10px;
     text-align: center;
-    font-size: 12px;
-    margin-top: 10px;
-    color: #666;
+    font-size: 13px;
+    color: #555;
+    border-top: 1px solid #eee;
 }
 </style>
 </head>
@@ -130,13 +136,12 @@ footer {
     <button class="copy-btn" onclick="copyValue()">Copy</button>
 </div>
 
-<!-- NEW EXPLANATION SECTION -->
 <div class="explain" id="explain">
     Select permissions to see explanation
 </div>
 
-<footer>
-Made by Omkar Deshmukh all writes are reserved. 2026
+<footer class="footer">
+    <p>© 2026 Omkar Deshmukh. All Rights Reserved.</p>
 </footer>
 
 </div>
